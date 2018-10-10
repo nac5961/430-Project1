@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Memory Game</title>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/style.css" />
+	
+	<!-- JavaScript -->
+	<script src="/bundle.js"></script>
+</head>
+<body>
+	<!-- Sound Effects -->
+	<audio id="redSound" src="/redSound.mp3"></audio>
+	<audio id="yellowSound" src="/yellowSound.mp3"></audio>
+	<audio id="greenSound" src="/greenSound.mp3"></audio>
+	<audio id="blueSound" src="/blueSound.mp3"></audio>
+	<audio id="wrongSound" src="/wrongSound.mp3"></audio>
+
+	<header>
+		<h1 id="title">Memory Game</h1>
+	</header>
+
+	<div id="content">
+		<div id="main">
+			<section class="content-container">
+				<h2 class="content-title">Create Game</h2>	
+				<div id="creator-container">
+					<h3 class="description">Click on a color to begin creating a pattern.</h3>
+			
+					<div id="pick-container">
+						<div id="red-pick"></div>
+						<div id="yellow-pick"></div>
+						<div id="green-pick"></div>
+						<div id="blue-pick"></div>
+					</div>
+				
+					<form id="input-container" action="/createGame" method="POST">
+						<h3 id="name-label">Game Name</h3>
+						<input id="name-input" type="text" autocomplete="off" pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$" maxlength="10" title="Cannot include numbers and leading/trailing spaces" placeholder="Enter game name" required />
+					
+						<div id="button-container">
+							<input id="create-button" type="submit" value="Create" />
+							<input id="cancel-button" type="button" value="Cancel" />
+						</div>	
+					</form>
+				</div>
+			
+				<div id="pattern-container">
+					<h3 class="description">Pattern (Max: 30)</h3>
+					<p id="pattern-text"></p>
+				</div>
+			</section>
+			
+			<section class="content-container">
+				<h2 class="content-title">Existing Games</h2>
+				<div id="finder-container">
+					<button id="find-button">Find Games</button>
+					<select id="filter">
+						<option value="/getGames">Filter: None</option>
+						<option value="/getGames?filter=a-z">Filter: A-Z</option>
+						<option value="/getGames?filter=z-a">Filter: Z-A</option>
+					</select>
+				</div>
+				
+				<div id="results-container">
+					<!-- Result Format -->
+					<!--
+					<div class="result">
+						<div class="result-text-container">
+							<p class="result-text">First Game</p>
+						</div>
+						
+						<div class="options-container">
+							<div class="options-sub-container">
+								<select class="difficulty">
+									<option value="normal">Speed: Normal</option>
+									<option value="fast">Speed: Fast</option>
+								</select>
+								<button class="play-button">Play</button>
+							</div>
+						</div>
+						
+						<div class="result-text-container">
+							<p class="result-text">Length: 30</p>
+						</div>
+					</div>
+					-->
+				</div>
+			</section>
+		</div>
+		
+		<div id="game">
+			<section class="content-container">
+				<h2 class="content-title" id="game-status">Play Game</h2>			
+				<div class="game-container">
+					<div id="red" class="lightRedColor"></div>
+					<div id="yellow" class="lightYellowColor"></div>
+					<div id="green" class="lightGreenColor"></div>
+					<div id="blue" class="lightBlueColor"></div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+</html>
